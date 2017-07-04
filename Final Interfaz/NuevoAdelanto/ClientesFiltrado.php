@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -13,7 +13,7 @@ maximum-scale=1.0, minimun-scale=1.0">
 	<div class="contenedor">
 		<img src="Imagenes/Logo.png"  width=220 height=70>
 		<h1 class="Titulo">Alquiler de Vajillas "Hilda Maria"</h1>
-		<a href="#" class="botonregresar" value="Regresar" onclick="" >
+		<a href="Administrador.php" class="botonregresar" value="Regresar" onclick="" >
 		<span class="icon-arrow-bold-left"></span>Regresar
 	</a>
 		<nav class="nav" id="nav">
@@ -75,41 +75,27 @@ maximum-scale=1.0, minimun-scale=1.0">
 <br><hr><br>
 <center><h1 class="Titulo">Busqueda y Eliminacion de Clientes</h1></center>
 <table>
-	<td><h2>Cedula /ID del Cliente:<input type="text" id="direccioncliente" size="20px"></h2></td>
-	<td><center><a href="#" class="botonguardar">
-		<span class="icon-eye"></span>Buscar
-	</a></center></td>
+	<form name="Buscar" method="post" action="PHPAdmin/SelectClientesBscar.php">
+	<td><h2>Cedula /ID del Cliente:<input type="text" id="direccioncliente" size="20px" name="buscar"></h2></td>
+	<td><center><span class="icon-eye"></span><input type="submit" value="Buscar" class="botones">
+	</center></td>
 	<td><center><a href="#" class="botonguardar">
 		<span class="icon-erase"></span>Eliminar
 	</a></center></td>
 	</table>
+    </form>
 	<br><br>
 <div>
 	<center><table class="tb1">
 		<tr>
 			<td><b>Cedula/ID</b></td>
 			<td><b>Nombres</b></td>
-			<td><b>Apellidos</b></td>
 			<td><b>Direccion</b></td>
 			<td><b>Telefono</b></td>
 			<td><b>Celular</b></td>
 		</tr>
-		<tr>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-		</tr>
-		<tr>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-		</tr>
+		<?php include('PHPAdmin/SelectClientesBscar.php');
+		?>
 	</table></center>
 
 </div>

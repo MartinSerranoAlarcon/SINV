@@ -1,3 +1,17 @@
+<?php
+session_start();
+function autoriza(){
+	  if(isset($_SESSION['usuario']) == true && $_SESSION['tipo'] == 1) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+if(autoriza() == false) {
+	header('location: PHPAdmin/Cerrar.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,7 +27,7 @@ maximum-scale=1.0, minimun-scale=1.0">
 	<div class="contenedor">
 		<img src="Imagenes/Logo.png"  width=220 height=70>
 		<h1 class="Titulo">Alquiler de Vajillas "Hilda Maria"</h1>
-		<a href="#" class="botonregresar" value="Regresar" onclick="" >
+		<a href="Administrador.php" class="botonregresar" value="Regresar" onclick="" >
 		<span class="icon-arrow-bold-left"></span>Regresar
 	</a>
 	</div>
@@ -25,33 +39,46 @@ maximum-scale=1.0, minimun-scale=1.0">
 <center><h1 class="Titulo">Ingreso y Modificacion de Productos</h1></center>
 <div class="EncabezadoFactura">	
 	<center><table border=0 width="730px">
-	<tr>
-	<th> PRODUCTO: </th>
-	<td><input type="text" id= "nombrecliente" size="35px"></td>
+	<form name="IngresoProdu" method="post" action="PHPAdmin/InsertP.php">
+    <tr>
+	<th> ID PRODUCTO: </th>
+	<td><input type="text" id= "nombreproducto" size="35px" name="idnomp"></td>
 	</tr>
 	<tr>
-	<th> TIPO DE PRODUCTO: </th>
-	<td><input type="text" id= "nombrecliente" size="35px"></td>
+	<th> NOMBRE DE PRODUCTO: </th>
+	<td><input type="text" id= "nombrecliente" size="35px" name="nomp"></td>
 	</tr>
-
 	<tr>
 	<th> CANTIDAD: </th>
-	<td><input type="text" id="telefono" size="10px"></td>
+	<td><input type="text" id="telefono" size="10px" name="cant"></td>
 	</tr>
 	<tr>
 	<th> PRECIO: </th>
-	<td><input type="text" id="telefono" size="10px"></td>
+	<td><input type="text" id="telefono" size="10px" name="prec"></td>
+	<tr>
+	<th> TIPO PRODUCTO: </th>
+    <td><select name="ntipoprod">
+		<option value="" selected>Elija un Tipo</option>
+		<?php include('PHPAdmin/ComboTipoProducto.php'); ?>
+        </select></td>
+	</tr>
+	<tr>
+	<th> PROVEEDOR: </th>
+    <td><select name="proveedor">
+		<option value="" selected>Elija Proveedor</option>
+		<?php include('PHPAdmin/ComboProveedor.php'); ?>
+        </select></td>
 	</tr>
 	</table>
 </div>
 <table>
-<td><center><a href="#" class="botonguardar">
-		<span class="icon-save"></span>Guardar
-</a></center></td>
+<td><center>
+		<span class="icon-save"></span><input type="submit" value="Guardar" class="botonguardar">
+</center></td>
 <td><center><a href="#" class="botonguardar">
 		<span class="icon-new-message"></span>Modificar
 </a></center></td>
-</table>
+</table></form>
 <br><hr><br>
 <center><h1 class="Titulo">Busqueda y Eliminacion de Productos</h1></center>
 <table>
@@ -68,22 +95,13 @@ maximum-scale=1.0, minimun-scale=1.0">
 	<center><table class="tb1">
 		<tr>
 			<td><b>Producto</b></td>
-			<td><b>Descripcion</b></td>
+			<td><b>Nombre Producto</b></td>
 			<td><b>Cantidad</b></td>
 			<td><b>Precio</b></td>
 		</tr>
-		<tr>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-		</tr>
-		<tr>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-		</tr>
+		<?php 
+		include('PHPAdmin/SelectP.php'); 
+		?> 
 	</table></center>
 
 </div>

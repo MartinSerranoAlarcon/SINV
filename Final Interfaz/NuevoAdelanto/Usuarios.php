@@ -1,4 +1,18 @@
-﻿<!DOCTYPE html>
+<?php
+session_start();
+function autoriza(){
+	  if(isset($_SESSION['usuario']) == true && $_SESSION['tipo'] == 1) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+if(autoriza() == false) {
+	header('location: PHPAdmin/Cerrar.php');
+}
+?>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -13,7 +27,7 @@ maximum-scale=1.0, minimun-scale=1.0">
 	<div class="contenedor">
 		<img src="Imagenes/Logo.png"  width=220 height=70>
 		<h1 class="Titulo">Alquiler de Vajillas "Hilda Maria"</h1>
-		<a href="#" class="botonregresar" value="Regresar" onclick="" >
+		<a href="Administrador.php" class="botonregresar" value="Regresar" onclick="" >
 		<span class="icon-arrow-bold-left"></span>Regresar
 	</a>
 		<nav class="nav" id="nav">
@@ -31,49 +45,47 @@ maximum-scale=1.0, minimun-scale=1.0">
 <center><h1 class="Titulo">Ingreso y Modificacion de Usuarios</h1></center>
 <div class="EncabezadoFactura">
 	
+	<form name="IngresoUsu" method="post" action="PHPAdmin/InsertUsuario.php">
 	<center><table border=0 width="730px">
 	<tr>
 	<th> CEDULA USUARIO: </th>
-	<td><input type="text" id= "nombrecliente" size="35px"></td>
+	<td><input type="text" id= "nombrecliente" size="35px" name="idusu"></td>
 	</tr>
 
 	<tr>
 	<th> NOMBRES: </th>
-	<td><input type="text" id= "nombrecliente" size="35px"></td>
+	<td><input type="text" id= "nombrecliente" size="35px" name="nombre"></td>
 	</tr>
 	
 	<tr>
 	<th> APELLIDOS: </th>
-	<td><input type="text" id= "nombrecliente" size="35px"></td>
+	<td><input type="text" id= "nombrecliente" size="35px" name="apellido"></td>
 	</tr>
 
 	<tr>
 	<th> USUARIO: </th>
-	<td colspan="4"><input type="text" id="direccioncliente" size="35px"></td>
+	<td colspan="4"><input type="text" id="direccioncliente" size="35px" name="usu"></td>
 	</tr>
 
 	<tr>
 	<th> CONTRASEÑA: </th>
-	<td><input type="password" id="telefono" size="35px"></td>
+	<td><input type="password" id="telefono" size="35px" name="pass"></td>
 	</tr>
 
 	<tr>
-	<th> USUARIO: </th>
-	<td><select size=1>
-	<option>ADMINISTRADOR</option>
-	<option>MANTELERIA</option>
-	<option>OFICINA</option>
-	<option>SECRETARIA</option>
-	<option>BODEGA</option>
-	</select></td>
+	<th> USUARIOS: </th>
+    <td><select name="usuario">
+	<!--<option value="" selected>Elija Proveedor</option>-->
+		<?php include('PHPAdmin/ComboUsuario.php'); ?>
+        </select></td>
 	</tr>
 
 	</table>
 </div>
 <table>
-<td><center><a href="#" class="botonguardar">
-		<span class="icon-save"></span>Guardar
-</a></center></td>
+<td><center>
+		<span class="icon-save"></span><input type="submit" value="Guardar" class="botonguardar">
+</center></td>
 <td><center><a href="#" class="botonguardar">
 		<span class="icon-new-message"></span>Modificar
 </a></center></td>
@@ -97,16 +109,7 @@ maximum-scale=1.0, minimun-scale=1.0">
 			<td><b>Usuario</b></td>
 			<td><b>Contraseña</b></td>
 		</tr>
-		<tr>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-		</tr>
-		<tr>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-		</tr>
+		<?php include('PHPAdmin/SelectUsuarios.php'); ?>
 	</table></center>
 
 </div>

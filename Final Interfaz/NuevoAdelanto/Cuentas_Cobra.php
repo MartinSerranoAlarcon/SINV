@@ -1,3 +1,17 @@
+<?php
+session_start();
+function autoriza(){
+	  if(isset($_SESSION['usuario']) == true && $_SESSION['tipo'] == 1) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+if(autoriza() == false) {
+	header('location: PHPAdmin/Cerrar.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,7 +27,7 @@ maximum-scale=1.0, minimun-scale=1.0">
 	<div class="contenedor">
 		<img src="Imagenes/Logo.png"  width=220 height=70>
 		<h1 class="Titulo">Alquiler de Vajillas "Hilda Maria"</h1>
-		<a href="#" class="botonregresar" value="Regresar" onclick="" >
+		<a href="Administrador.php" class="botonregresar" value="Regresar" onclick="" >
 		<span class="icon-arrow-bold-left"></span>Regresar
 	</a>
 	</div>
@@ -32,32 +46,33 @@ maximum-scale=1.0, minimun-scale=1.0">
 	
 	<center><table border=0 width="100%">
 
+	<form name="IngresoCXC" method="POST" action="PHPAdmin/InsertCXC.php">
 	<tr>
     <th>Numero de Orden:</th>
-    <td><input type="text" step="any" id= "NombreCliente" size="20px"></td>
+    <td><input type="text" step="any" id= "NombreCliente" size="20px" name="numorden"></td>
     <th>Valor: </th>
-	<td><input type="number" step="any" id= "Valor_Cuenta_Cobrar" size="10px"></td>
+	<td><input type="number" step="any" id= "Valor_Cuenta_Cobrar" size="10px" name="valor"></td>
     </tr>
 	<tr>
 	<th>Abono:</th>
-	<td><input type="number" step="any" id="Abono_Cuenta_Cobrar" size="43px"></td>
+	<td><input type="number" step="any" id="Abono_Cuenta_Cobrar" size="43px" name="abono"></td>
 	<th>Fecha:</th>
-	<td>&nbsp &nbsp &nbsp <input type="date" id="fecha_Cuenta_Cobrar" size="25px"></td>
+	<td>&nbsp &nbsp &nbsp <input type="date" id="fecha_Cuenta_Cobrar" size="25px" name="fecha"></td>
 	</tr>
 
 	<tr>
     <th>Cuotas: </th>
-	<td><input type="number" step="any" id="Cuotas_Cuenta_Cobrar" name="ruc" size="20px"></td>
+	<td><input type="number" step="any" id="Cuotas_Cuenta_Cobrar" name="cuota" size="20px"></td>
 	<th>Estado:</th>
-	<td width="15" style="font-size:15px">Ingresada<input type="checkbox" id="I" size="5"></td>
-	<td style="font-size:15px">Terminada<input type="checkbox" id="T" size="5"></td>
+	<td width="15" style="font-size:15px">Ingresada<input type="checkbox" id="I" size="5" name="estadoa" value="1"></td>
+	<td style="font-size:15px">Terminada<input type="checkbox" id="T" size="5" name="estadod" value="1"></td>
 	</tr>
 	</table>
 <center>
-	<a href="#" class="botonguardar">
-		<span class="icon-save"></span>Guardar
-	</a>
+		<span class="icon-save"></span><input type="submit" value="Guardar" class="botonguardar">
 	</center>
+        </form>
+
 </div>
 </div>
 </center>
@@ -72,22 +87,9 @@ maximum-scale=1.0, minimun-scale=1.0">
 			<td><b>Fecha</b></td>
 			<td><b>Estado</b></td>
 		</tr>
-		<tr>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-		</tr>
-		<tr>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-		</tr>
+		<?php
+		include('PHPAdmin/SelectCXC.php');
+		?>
 	</table></center>
 <br><br>	
 <footer class="footer">

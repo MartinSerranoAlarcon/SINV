@@ -7,20 +7,19 @@ maximum-scale=1.0, minimun-scale=1.0">
 <link rel="stylesheet" href="estilos.css">
 <link rel="stylesheet" href="fonts/style.css">
     <style>
+        .header .contenedor{
+	       display:flex;
+	       justify-content:space-between;
+        }
+        
         @media(min-width:480px){
-          .cent{
+            .cent{
                 border-right-style:none;
                 width: 100%;
             }
+        }
             
-        }
-    @media(min-width:1024px){
-        .izq{
-            display:inline-block;
-        }
-    }
-
-    @media(min-width:1280px){
+        @media(min-width:1280px){
         .izq{
                 display: inline-block;
                 width:500px;
@@ -37,39 +36,37 @@ maximum-scale=1.0, minimun-scale=1.0">
                 border-right-style:double;
                 width: 500px;
             }
+        } 
+        
     }
-</style>
+    </style>
+<script src="flogin.js"></script>
 </head>
 <body background='Imagenes/background-1478187121.png'>
 <header class="header">
 	<div class="contenedor">
 		<img src="Imagenes/Logo.png"  width=220 height=70>
-		<h1 class="Titulo">Alquiler de Vajillas "Hilda Maria"</h1>
-		<a href="Login.html" class="botonregresar" value="Regresar" onclick="" >
-		<span class="icon-arrow-bold-left"></span>Regresar
-	</a>
+        <h1 class="Titulo">Alquiler de Vajillas "Hilda Maria"</h1>
+        
 	</div>
 </header>
-
+    
 <div class="ContenidoPrin">
-			<div class="izq">
-            </div>
-			<div class="cent">
-				<center><h2>Bodega</h2></center>
-				<center><a href="BProductos.html" class="botones">
-				<span class="icon-layers"></span>Buscar Productos
-				</a></center>
-				<center><a href="Consultas.html" class="botones">
-				<span class="icon-documents"></span>Ordenes de Trabajo
-				</a></center>
-				<center><a href="TTransportes.html" class="botones">
-				<span class="icon-documents"></span>Transportes en ruta
-				</a></center>
-				
-			</div>
-			<div class="der">
-			</div>
-</div>			
+	<div class="izq">
+	</div>
+    <div class="cent">
+	<br><br><br><br>
+                            <center><h2>Validacion de credenciales</h2></center>
+                        <form name="login" method="POST" action="PHPAdmin/Validar.php">
+                        <center><label for="user">Usuario:</label><input type="text" name="nnombre" placeholder="Usuario" /></center>
+            <br>
+            <center><label for="passw">Clave          :        </label><input type="password" name="npassword" placeholder="Contraseña" /></center>
+            <br>
+		<center><input type="submit" value="Ingresar" class="botones"></center>
+		</form>
+     </div>
+</div>	
+
 <footer class="footer">
 <center><h3>&copy; Todos los derechos reservados</h3></center>
 </footer>
