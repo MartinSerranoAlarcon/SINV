@@ -1,0 +1,13 @@
+cuentas por pagar
+Cedula Provedor
+Factura Provedor
+
+Cuentas por Cobrar
+Numero de Orden
+
+Producto
+Tipo e produ Checklist
+Checlist Provedor
+
+
+
