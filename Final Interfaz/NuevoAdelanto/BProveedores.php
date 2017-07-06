@@ -6,6 +6,16 @@
 maximum-scale=1.0, minimun-scale=1.0">
 <link rel="stylesheet" href="estilos.css">
 <link rel="stylesheet" href="fonts/style.css">
+<?php include 'Conexion.php';
+
+$where = '';
+//boton de busqueda
+if (isset($_POST['btnBuscar'])) {
+ $busqueda = $_POST['txtBusqueda'];
+ $tipoBusqueda = $_POST['tipoBusqueda'];
+ $where = "where P.".$tipoBusqueda." like '".$busqueda."%'";
+}
+?>
 </head>
 <body background='Imagenes/background-1478187121.png'>
 	<script type="text/javascript" src="factura.js"></script>
@@ -24,12 +34,20 @@ maximum-scale=1.0, minimun-scale=1.0">
 <center><div class="Factura">
 <br><hr><br>
 <center><h1 class="Titulo">Busqueda de Proveedores</h1></center>
-<table>
-	<td><h2>Cedula o RUC del Proveedor:<input type="text" id="direccioncliente" size="20px"></h2></td>
-	<td><center><a href="#" class="botonguardar">
-		<span class="icon-eye"></span>Buscar
-	</a></center></td>
+<form method="post">
+	<table>
+		<td><h2>Busqueda por:</h2></td>
+		<td><select size=1 name="tipoBusqueda">
+			<option value="ID_PROVEEDOR">CEDULA/RUC</option>
+			<option value="NOMBRES_PROVEEDOR">NOMBRES</option>
+			<option value="NOMBRES_PROVEEDOR">APELLIDOS</option>
+			</select>
+		</td>
+		<td><input type="text" id="direccioncliente" name="txtBusqueda" size="20px"></td>
+		<td><center><a href="#" class="botonguardar"><span class="icon-eye"></span>Buscar</a></center></td>
+		<td><button type="submit" name="btnBuscar">Buscar</button></td>
 	</table>
+</form>
 	<br><br>
 <div>
 	<center><table class="tb1">
@@ -40,20 +58,21 @@ maximum-scale=1.0, minimun-scale=1.0">
 			<td><b>Direccion</b></td>
 			<td><b>Telefono</b></td>
 		</tr>
-		<tr>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-		</tr>
-		<tr>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-		</tr>
+		<?php
+		$mysqli = $enlace;
+
+      if($consultaSQL = mysqli_query($mysqli, "sELECT P.ID_PROVEEDOR, P.NOMBRES_PROVEEDOR, P.DIRECCION_PROVEEDOR, P.TELEFONO_PROVEEDOR FROM PROVEEDOR P ".$where)){
+        while ($filas = mysqli_fetch_array($consultaSQL)) {
+            echo "
+            <tr>
+        			<td>".$filas['ID_PROVEEDOR']."</td>
+        			<td>".$filas['NOMBRES_PROVEEDOR']."</td>
+        			<td>".$filas['DIRECCION_PROVEEDOR']."</td>
+        			<td>".$filas['TELEFONO_PROVEEDOR']."</td>
+        		</tr>";
+        }
+      }
+		 ?>
 	</table></center>
 <center><a href="#" class="botonimprimir">
 		<span class="icon-print"></span>Imprimir

@@ -6,6 +6,17 @@
 maximum-scale=1.0, minimun-scale=1.0">
 <link rel="stylesheet" href="estilos.css">
 <link rel="stylesheet" href="fonts/style.css">
+<?php
+include 'Conexion.php';
+ //Bariables de busquda
+ $where = '';
+
+//boton de busqueda
+if (isset($_POST['btnBuscar'])) {
+  $busqueda = $_POST['txtBusqueda'];
+  $where = "where  P.NOMBRE_PRODUCTO like '".$busqueda."%'";
+}
+?>
 <style>
     .Factura{
             margin:auto;
@@ -13,7 +24,7 @@ maximum-scale=1.0, minimun-scale=1.0">
             width:100%;
             height:100%;
         }
-    
+
 </style>
 </head>
 <body background='Imagenes/background-1478187121.png'>
@@ -33,12 +44,13 @@ maximum-scale=1.0, minimun-scale=1.0">
 
 <br><hr><br>
 <center><h1 class="Titulo">Busqueda de Productos</h1></center>
-<table>
-	<td><h2>Ingresar el nombre del producto: <input type="text" id="direccioncliente" size="20px"></h2></td>
-	<td><center><a href="#" class="botonguardar">
-		<span class="icon-eye"></span>Buscar
-	</a></center></td>
-	</table>
+<form method="post">
+  <table>
+  	<td><h2>Ingresar el nombre del producto: <input type="text" id="direccioncliente" name="txtBusqueda" size="20px"></h2></td>
+  	<td><center><a href="#" class="botonguardar" name="btnBuscar"><span class="icon-eye"></span>Buscar</a></center></td>
+    <td><button type="submit" name="btnBuscar">Buscar</button></td>
+  	</table>
+</form>
 	<br><br>
 	<center><table class="tb1">
 		<tr>
@@ -47,25 +59,28 @@ maximum-scale=1.0, minimun-scale=1.0">
 			<td><b>Cantidad</b></td>
 			<td><b>Precio</b></td>
 		</tr>
-		<tr>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-		</tr>
-		<tr>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-			<td>Dato</td>
-		</tr>
+    <?php
+    $mysqli = $enlace;
+
+      if($consultaSQL = mysqli_query($mysqli, "select P.ID_PRODUCTO, P.NOMBRE_PRODUCTO, P.CANTIDAD_PRODUCTO, P.PRECIO_PRODUCTO FROM PRODUCTO P ".$where)){
+        while ($filas = mysqli_fetch_array($consultaSQL)) {
+            echo "
+            <tr>
+        			<td>".$filas['ID_PRODUCTO']."</td>
+        			<td>".$filas['NOMBRE_PRODUCTO']."</td>
+        			<td>".$filas['CANTIDAD_PRODUCTO']."</td>
+        			<td>".$filas['PRECIO_PRODUCTO']."</td>
+        		</tr>";
+        }
+      }
+     ?>
 	</table></center>
 <center><a href="#" class="botonimprimir">
 		<span class="icon-print"></span>Imprimir
 	</a></center>
 <br><br><br><hr><br>
 </div></center>
-		
+
 <footer class="footer">
 <center><h3>&copy; Todos los derechos reservados</h3></center>
 </footer>
