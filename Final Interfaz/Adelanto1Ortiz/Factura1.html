@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0,
+maximum-scale=1.0, minimun-scale=1.0">
+<link rel="stylesheet" href="estilos.css">
+<link rel="stylesheet" href="fonts/style.css">
+<style>
+    /*--------------------Estilos del responsive-------------*/
+
+    @media(min-width:480px){
+        .inputstyle {
+                font-family: Arial;  
+                width:100%;
+        }
+        
+        .inputstyleE {
+                font-family: Arial;  
+                width:280px;
+        }
+        
+        .inputstyleEC {
+                font-family: Arial;  
+                width:200px;
+        }
+        
+        .inputstyleA {
+                font-family: Arial;  
+                width:100%;
+        }
+        
+        .Factura{
+	       margin:auto;
+	       margin-top:10px;
+	       width:100%;
+	       height:100%;
+	       display:inline-block;
+        }
+        
+        .Botones_Funciones{
+            display:none;
+        }
+        
+        .header{
+            height:75px;
+            background:#000000;
+            width:100%;
+            cclear:both;
+            position:fixed;
+        }
+    }
+
+
+    @media(min-width:768px){
+       
+    }
+
+    @media(min-width:1024px){
+        .inputstyle {
+                font-family: Arial;  
+                width:100%;
+        }
+        
+        .inputstyleE {
+                font-family: Arial;  
+                width:100%;
+        }
+        
+        .icon-menu{
+            display:none;
+        }
+        
+        .Botones_Funciones{
+            display:inline-block;
+        }
+        
+        .Factura{
+            margin:auto;
+            margin-top:10px;
+            margin-left:100px;
+            width:700px;
+            height:100%;
+            display:inline-block;
+        }
+        
+        .header{
+            height:75px;
+            background:#000000;
+            width:100%;
+            cclear:both;
+        }
+    }
+
+    @media(min-width:1280px){
+        .inputstyle {
+                font-family: Arial;  
+                width:100%;
+        }
+            
+        .inputstyleE {
+                font-family: Arial;  
+                width:100%;
+        }
+        
+        .Factura{
+            margin:auto;
+            margin-top:10px;
+            margin-left:120px;
+            width:800px;
+            height:100%;
+            display:inline-block;
+        }
+        
+        .icon-menu{
+            display:none;
+        }
+        
+        .Botones_Funciones{
+            display:inline-block;
+        }
+        
+        .header{
+            height:75px;
+            background:#000000;
+            width:100%;
+            cclear:both;
+            position: static;
+        }
+    }
+
+</style>
+</head>
+<body background='Imagenes/background-1478187121.png'>
+	<script type="text/javascript" src="factura.js"></script>
+<header class="header">
+	<div class="contenedor">
+		<img src="Imagenes/Logo.png"  width=220 height=70>
+		<h1 class="Titulo">Alquiler de Vajillas "Hilda Maria"</h1>
+		<a href="Oficina.html" class="botonregresar" value="Regresar" onclick="" >
+            <span class="icon-arrow-bold-left"></span>Regresar</a>
+        <span class="icon-menu" id="btn-menu"></span>
+        
+	</a>
+	</div>
+    <nav class="nav" id="nav">
+			<ul class="Menu">
+				<li class="Menu_item"><a class="Menu_link select" href="">Calcular</a></li>
+				<li class="Menu_item"><a class="Menu_link" href="Prueba.html">Guardar</a></li>
+				<li class="Menu_item"><a class="Menu_link" href="">Imprimir</a></li>
+			</ul>
+		</nav>
+</header>
+
+<script type="text/javascript" src="factura.js"></script>
+
+<div class="Botones_Funciones">
+		
+	<br></br>
+
+	
+		
+	<br></br>
+
+	
+	
+	<br></br>
+	<br></br>
+	<br></br>
+
+</div>
+
+<div class="Factura">
+<div class="EncabezadoFactura">
+	
+	<center><table border=0 width="100%" style="font-size:15px">
+        
+    <tr>
+        <th colspan="3" style="text-align: right;">Nº ORDEN</th>  
+        <td><input type="text" id= "id_factura" class="inputstyleEC" ></td>
+        
+    </tr>
+
+	<tr>
+	<th>CLIENTE: </th>
+	<td><input type="text" id= "nombrecliente" class="inputstyleE" ></td>
+	<th align="center">C.I./R.U.C.: </th>
+	<td><input type="text" id="ruc" name="ruc" class="inputstyleEC"></td>
+	</tr>
+
+	<tr>
+	<th>DIRECCION:</th>
+	<td><input type="text" id="direccioncliente" class="inputstyleE" ></td>
+	<th align="center">FECHA:</th>
+	<TD><input type="date" id="fecha_factura" class="inputstyleEC"></td>
+	</tr>
+
+	<tr>
+	<th >TELF:</th>
+	<td><input type="text" id="telefono" class="inputstyleEC"></td>
+	<th align="center">CEL:</th>
+	<td><input type="text" id="celular" class="inputstyleEC"></td>
+	</tr>
+
+	</table>
+</div>
+
+<div class="CuerpoFactura">
+	<center><table id="dataTable" border=1 width="100%" style="font-size:17px">
+	
+	<tr>
+	<th> Cantidad</th>
+	<th> Artículo</th>
+	<th> P. Unit.</th>
+	<th> P. Total</th>
+	</tr>
+
+	<tr>
+	<td ><input type="text" id="cant1"  style="text-align:center;" class="inputstyle"></td>
+	<td ><input type="text" id="desc1" class="inputstyleA"></td>
+	<td ><input type="text" id="precio1"  style="text-align:center;" class="inputstyle"></td>
+	<td ><input type="text" id="valor1"  style="text-align:center;" class="inputstyle"></td>
+	</tr>
+
+	<tr>
+	<td><input type="text" id="cant2"  style="text-align:center;" class="inputstyle"></td>
+	<td><input type="text" id="desc2" class="inputstyleA"></td>
+	<td><input type="text" id="precio2"  style="text-align:center;" class="inputstyle"></td>
+	<td><input type="text" id="valor2"  style="text-align:center;" class="inputstyle"></td>
+	</tr>
+
+	<tr>
+	<td><input type="text" id="cant3"  style="text-align:center;" class="inputstyle"></td>
+	<td><input type="text" id="desc3" class="inputstyleA"></td>
+	<td><input type="text" id="precio3" class="inputstyle"></td>
+	<td><input type="text" id="valor3" class="inputstyle" ></td>
+	</tr>
+
+	<tr>
+	<th colspan="2">&nbsp  &nbsp &nbsp &nbsp
+	 &nbsp &nbsp  &nbsp &nbsp   &nbsp 
+	&nbsp Garantía: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+	&nbsp  &nbsp &nbsp  &nbsp 
+	</th>
+	<td>Subtotal 1</td>
+	<td><input type="text" id="subtot1"  style="text-align:center;" class="inputstyle"></td>
+	</tr>
+	
+	<tr>
+	<td colspan="2" rowspan="2"><center><input type="text"  id="garantia" class="inputstyle"></center></td>
+	</tr>
+
+	<tr>
+	<td>Transporte</td>
+	<td><input type="text" id="transporte"  style="text-align:center;" class="inputstyle"></td>
+	</tr>
+
+	<tr>
+	<td >Fecha Sal. Merc.</td>
+    <td>Hora Salida:</td>
+	<td>Subtotal 2</td>
+	<td><input type="text" id="subtot2"  style="text-align:center;" class="inputstyle"></td>
+	</tr>
+        
+    <tr>
+	   <td><input type="date" id="fechasalida" class="inputstyle"></td>
+	   <td><input type="time" id="horasalida" class="inputstyle"></td>  
+        <td>Descuento</td>
+	<td><input type="text" id="descuento"  style="text-align:center;" class="inputstyle"></td>
+    </tr>
+
+	<tr>
+	<td>Fecha Ent. Merc.</td>
+	<td>Hora Entrega:</td>
+        <td >Subtotal 3</td></td>
+	<td><input type="text" id="subtot3"  style="text-align:center;" class="inputstyle"></td>
+	</tr>
+        
+    <tr>
+        <td><input type="date" id="fechaentrega" class="inputstyle"></td>
+	<td ><input type="time" id="horaentrega" class="inputstyle"></td> 
+        <td >I.V.A</td>
+	<td><input type="text" id="iva"  style="text-align:center;" class="inputstyle"></td>
+    </tr>
+
+	<tr>
+	<td>Servicio Domi.</td>
+	<td>
+	<table>
+	<tr>
+	<td>Sí</td>
+	<td><input type="checkbox" id="Si" ></td>
+	<td>No</td>
+	<td><input type="checkbox" id="No" ></td>
+	</tr>
+	</table>
+        <td>Total:</td>
+	<td><input type="text" id="total"  style="text-align:center;" class="inputstyle"></td>
+        
+    <tr>
+        <td>Disponibilidad Transporte</td>
+        <td><SELECT NAME="Combo_transporte" SIZE=1 onChange=""> 
+            <OPTION VALUE="1">----------</OPTION>
+            <OPTION VALUE="2">----------</OPTION>
+            </SELECT></td>
+    </tr>
+	</table>
+
+	<form>
+	<br>
+<table>
+<td><a href="#" class="botonguardar">
+		<span class="icon-save"></span>Guardar
+	</a></td>
+<td><a href="#" class="botonimprimir">
+		<span class="icon-print"></span>Imprimir
+	</a></td>
+<td><a href="#" class="botonguardar">
+		<span class="icon-export"></span>Enviar Bodega
+	</a></td>
+</table>
+</div>
+
+</div>
+		
+<footer class="footer">
+<center><h3>&copy; Todos los derechos reservados</h3></center>
+</footer>
+<script src="Menu.js"></script>
+</body>
+</html>
