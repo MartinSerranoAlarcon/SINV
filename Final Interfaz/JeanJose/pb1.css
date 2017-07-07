@@ -1,0 +1,31 @@
+html{
+	background-image:url(background-1478187121.png);
+}
+
+.cabe{
+	border-style:double;
+	padding:10px;
+			
+}
+
+.izq{
+	float:left;
+	width:400px;
+	height:350px;
+}
+
+.cen{
+	float:left;
+	width:500px;
+	height:350px;
+	border-style:dotted;
+	
+}
+
+.der{
+	float:left;
+	width:400px;
+	height:350px;
+}
+
+
