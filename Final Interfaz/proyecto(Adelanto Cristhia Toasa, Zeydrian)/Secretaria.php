@@ -50,16 +50,16 @@ maximum-scale=1.0, minimun-scale=1.0">
 			</div>
 			<div class="cent">
 				<center><h2>Secretaria</h2></center>
-				<center><a href="BProductos.php" class="botonguardar">
+				<center><a href="BProductosS.php" class="botonguardar">
 				<span class="icon-layers"></span>Productos
 				</a></center>
-				<center><a href="BClientes.php" class="botonguardar">
+				<center><a href="BClientesS.php" class="botonguardar">
 				<span class="icon-man"></span>Clientes
 				</a></center>
-				<center><a href="BProveedores.php" class="botonguardar">
+				<center><a href="BProveedoresS.php" class="botonguardar">
 				<span class="icon-users"></span>Proveedores
 				</a></center>
-				<center><a href="BTransportes.php" class="botonguardar">
+				<center><a href="BTransportesS.php" class="botonguardar">
 				<span class="icon-box"></span>Transportes
 				</a></center>
 			</div>
